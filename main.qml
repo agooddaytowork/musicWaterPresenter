@@ -11,16 +11,49 @@ Window {
     //    Repeater{
     //        model: 9
 
+    ComboBox{
+        id: highlightComboBox
+        model: 10
+        anchors.top: parent.top
+        anchors.right: parent.right
 
-    Repeater{
-        model: 9
-        MusicPresenterGroup{
-            groupID: index
-            anchors.top: parent.top
-            anchors.left: parent.left
-            scale: 1
+    }
+
+    Rectangle{
+        width: 500
+        height: 500
+        color: "grey"
+        Repeater{
+            model: 9
+
+            MusicPresenterGroup{
+                id: theGroup
+                property int groupIndex: index
+                groupID: index
+                anchors.top: parent.top
+                anchors.left: parent.left
+                scale: 1
+
+                Connections{
+                    target: highlightComboBox
+                    onCurrentIndexChanged:
+                    {
+                        if(highlightComboBox.currentIndex == 9 || highlightComboBox.currentIndex == theGroup.groupIndex)
+                        {
+                            theGroup.visible = true
+                        }
+                        else
+                        {
+                            theGroup.visible = false
+                        }
+                    }
+                }
+            }
         }
     }
+
+
+
 
 //    Repeater{
 //        model: 3

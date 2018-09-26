@@ -12,7 +12,9 @@ Item {
     property string ledColor: "red"
     property int  ledMode: 0
     property double scale : 1.0
-    property int edgePixelLength: 5
+    property int edgePixelLength: 8
+
+
 
 
 
@@ -22,8 +24,8 @@ Item {
         width: root.edgePixelLength * scale
         height: root.edgePixelLength * scale
         radius: (root.edgePixelLength * scale) /2
-
-        border.width:  1
+        color: "white"
+        border.width:  2
         border.color: ledColor
     }
 }
